@@ -1,0 +1,42 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    var product = new Product() { Id = 1, Name = "Kalem 1", Price = 300, Stock = 200 };
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+<partial name="_MenuPartialView" />
+@section Scripts{
+
+
+}
+@section Css{
+
+}
+<div class="row">
+    <div class="col-md-4">
+        <partial name="~/PartialViews/_ProductListPartialView.cshtml" model="@ViewBag.productListPartialViewModel" />
+    </div>
+    <div class="col-md-6">
+        @* @await Component.InvokeAsync("ProductList",new {type=1}) *@
+        <vc:product-list type="1"></vc:product-list> @*bu bir tag helperdır.yazdığımız bu tag halper yukarıdaki ile aynı işi yapar.
+ fakat cshtml dosyasında c# kodu olması kodu pisletir.tag helper aynı bir html gibi kullanıldığı ve daha şık göründüğü için kullanılması daha iyidir*@
+    </div>
+
+
+    <div class="col-md-4">
+
+        <italic>Asp Net Core</italic> @* kendi oluşturmuş olduğum tag helper *@
+        <product-show product="@product"></product-show>
+        
+
+    </div>
+
+</div>
+<div>
+    <img src="/images/car.jpeg" />
+    <thumbnail image-src="/images/car.jpeg"></thumbnail>
+</div>
+
